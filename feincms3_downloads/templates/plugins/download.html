@@ -1,0 +1,5 @@
+<a href="{{ plugin.file.url }}" target="_blank" class="download button">
+  {% if plugin.show_preview and plugin.preview %}
+    <img src="{{ plugin.preview.url }}" class="download__preview" alt=""/>{% endif %}
+  {% firstof plugin.caption plugin %}
+</a>
