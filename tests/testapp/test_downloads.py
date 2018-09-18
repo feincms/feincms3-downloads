@@ -1,5 +1,6 @@
 import io
 import os
+from PIL import Image
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -89,3 +90,33 @@ class Test(TestCase):
         download = Download.objects.get()
         self.assertEqual(download.file_size, 5052)
         self.assertTrue(download.preview.name.endswith(".jpg"))
+
+        image = Image.open(download.preview)
+        self.assertEqual(image.size, (160, 160))
+
+    def test_large_image(self):
+        client = self.login()
+        with openimage("500x500-ffff007f.png") as f:
+            response = client.post(
+                "/admin/testapp/article/add/",
+                merge_dicts(
+                    zero_management_form_data("testapp_html_set"),
+                    zero_management_form_data("testapp_download_set"),
+                    {
+                        "testapp_download_set-TOTAL_FORMS": 1,
+                        "testapp_download_set-0-file": f,
+                        "testapp_download_set-0-region": "main",
+                        "testapp_download_set-0-ordering": "10",
+                        "testapp_download_set-0-show_preview": "1",
+                    },
+                ),
+            )
+
+        self.assertRedirects(response, "/admin/testapp/article/")
+
+        download = Download.objects.get()
+        self.assertEqual(download.file_size, 1630)
+        self.assertTrue(download.preview.name.endswith(".jpg"))
+
+        image = Image.open(download.preview)
+        self.assertEqual(image.size, (300, 300))
