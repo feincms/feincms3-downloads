@@ -23,11 +23,7 @@ class DownloadBase(models.Model):
         return self.file.name
 
     def save(self, *args, **kwargs):
-        try:
-            self.file_size = self.file.size
-        except Exception:
-            self.file_size = -1
-
+        self.file_size = self.file.size
         super().save(*args, **kwargs)
         if self.show_preview and not self.preview:
             with tempfile.TemporaryDirectory() as directory:
