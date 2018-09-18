@@ -12,6 +12,12 @@ class DownloadBase(models.Model):
         _('file'),
         upload_to='files/%Y/%m',
     )
+    file_size = models.IntegerField(
+        _('file size'),
+        blank=True,
+        null=True,
+        editable=False,
+    )
     caption = models.CharField(
         _('caption'),
         max_length=100,
@@ -36,6 +42,14 @@ class DownloadBase(models.Model):
         return self.file.name
 
     def save(self, *args, **kwargs):
+        if self.file:
+            try:
+                self.file_size = self.file.size
+            except Exception:
+                pass
+        else:
+            self.file_size = None
+
         super().save(*args, **kwargs)
         if self.show_preview and not self.preview:
             with tempfile.TemporaryDirectory() as directory:
