@@ -69,17 +69,20 @@ class Test(TestCase):
     def test_preview(self):
         client = self.login()
         with openimage("smallliz.tif") as f:
-            response = client.post("/admin/testapp/article/add/", merge_dicts(
-                zero_management_form_data("testapp_html_set"),
-                zero_management_form_data("testapp_download_set"),
-                {
-                    "testapp_download_set-TOTAL_FORMS": 1,
-                    "testapp_download_set-0-file": f,
-                    "testapp_download_set-0-region": "main",
-                    "testapp_download_set-0-ordering": "10",
-                    "testapp_download_set-0-show_preview": "1",
-                },
-            ))
+            response = client.post(
+                "/admin/testapp/article/add/",
+                merge_dicts(
+                    zero_management_form_data("testapp_html_set"),
+                    zero_management_form_data("testapp_download_set"),
+                    {
+                        "testapp_download_set-TOTAL_FORMS": 1,
+                        "testapp_download_set-0-file": f,
+                        "testapp_download_set-0-region": "main",
+                        "testapp_download_set-0-ordering": "10",
+                        "testapp_download_set-0-show_preview": "1",
+                    },
+                ),
+            )
 
         self.assertRedirects(response, "/admin/testapp/article/")
 
