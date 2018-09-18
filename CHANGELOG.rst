@@ -6,6 +6,7 @@ Change log
 ~~~~~~~~~~~~~~~
 
 - Added an automatically managed ``file_size`` field to the plugin.
+- Formatted the code using black.
 
 
 `0.1`_ (2016-10-06)
