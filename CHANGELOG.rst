@@ -5,6 +5,11 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Extracted the preview JPEG generation into its own function.
+- Modified the preview generation to never upscale images and to apply a
+  bounding box instead of specifying only the maximum width.
+
+
 `0.2`_ (2016-09-18)
 ~~~~~~~~~~~~~~~~~~~
 
