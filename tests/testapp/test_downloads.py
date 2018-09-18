@@ -1,3 +1,7 @@
+import io
+import os
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.test import Client, TestCase
@@ -22,6 +26,10 @@ def merge_dicts(*dicts):
     return res
 
 
+def openimage(path):
+    return io.open(os.path.join(settings.MEDIA_ROOT, path), "rb")
+
+
 class Test(TestCase):
     def setUp(self):
         self.user = User.objects.create_superuser("admin", "admin@test.ch", "blabla")
@@ -42,7 +50,7 @@ class Test(TestCase):
             response, '<a href="/admin/testapp/article/">Articles</a>', 1
         )
 
-    def test_view(self):
+    def test_simple(self):
         article = Article.objects.create()
         HTML.objects.create(
             parent=article, ordering=1, region="main", html="<b>Hello</b>"
@@ -55,3 +63,26 @@ class Test(TestCase):
         self.assertContains(response, 'class="download button"')
 
         self.assertEqual(download.file_size, 5)
+        self.assertTrue(download.show_preview)
+        self.assertFalse(download.preview)
+
+    def test_preview(self):
+        client = self.login()
+        with openimage("smallliz.tif") as f:
+            response = client.post("/admin/testapp/article/add/", merge_dicts(
+                zero_management_form_data("testapp_html_set"),
+                zero_management_form_data("testapp_download_set"),
+                {
+                    "testapp_download_set-TOTAL_FORMS": 1,
+                    "testapp_download_set-0-file": f,
+                    "testapp_download_set-0-region": "main",
+                    "testapp_download_set-0-ordering": "10",
+                    "testapp_download_set-0-show_preview": "1",
+                },
+            ))
+
+        self.assertRedirects(response, "/admin/testapp/article/")
+
+        download = Download.objects.get()
+        self.assertEqual(download.file_size, 5052)
+        self.assertTrue(download.preview.name.endswith(".jpg"))
