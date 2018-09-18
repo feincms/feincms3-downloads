@@ -1,12 +1,14 @@
 language: python
 cache: pip
-sudo: false
+sudo: true
 python:
 - "3.6"
 - "3.5"
 env:
 - REQ="Django>=2.1,<2.2"
 - REQ="Django>=1.11,<2.0"
+before_install:
+- apt get -y install ghostscript imagemagick
 install:
 - pip install -U pip setuptools wheel
 - pip install $REQ
