@@ -3,9 +3,9 @@ import subprocess
 import tempfile
 
 
-def preview_as_jpeg(path, *, geometry="300x300>"):
+def preview_as_jpeg(path, *, resize="300x300>"):
     with tempfile.TemporaryDirectory() as directory:
-        cmd = ["convert", "-geometry", geometry, "-quality", "90"]
+        cmd = ["convert", "-resize", resize, "-quality", "90"]
 
         if path.lower().endswith(".pdf"):
             cmd.extend(["-background", "white", "-alpha", "remove"])
