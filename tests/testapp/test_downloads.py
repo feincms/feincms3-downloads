@@ -96,7 +96,7 @@ class Test(TestCase):
 
     def test_large_image(self):
         client = self.login()
-        with openimage("500x500-ffff007f.png") as f:
+        with openimage("yes.pdf") as f:
             response = client.post(
                 "/admin/testapp/article/add/",
                 merge_dicts(
@@ -115,8 +115,8 @@ class Test(TestCase):
         self.assertRedirects(response, "/admin/testapp/article/")
 
         download = Download.objects.get()
-        self.assertEqual(download.file_size, 1630)
+        self.assertEqual(download.file_size, 15325)
         self.assertTrue(download.preview.name.endswith(".jpg"))
 
         image = Image.open(download.preview)
-        self.assertEqual(image.size, (300, 300))
+        self.assertEqual(image.size, (212, 300))
