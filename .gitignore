@@ -9,3 +9,6 @@ build
 dist
 venv
 .tox
+.coverage
+htmlcov
+tests/testapp/media

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% load feincms3_renderer %}
+
+{% block title %}{{ article }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>{{ article }}</h1>
+{% render_region regions 'main' %}
+{% endblock %}

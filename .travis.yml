@@ -1,0 +1,27 @@
+language: python
+cache: pip
+sudo: false
+python:
+- "3.6"
+- "3.5"
+addons:
+  postgresql: "9.4"
+env:
+- REQ="Django>=1.11,<2.0"
+- REQ="Django>=2.1,<2.2"
+install:
+- pip install -U pip setuptools wheel
+- pip install $REQ
+- pip install feincms3 Pillow psycopg2-binary
+- python setup.py install
+script: cd tests && ./manage.py test -v 2 testapp && cd ..
+
+jobs:
+  include:
+    - stage: style
+      env: REQ=none
+      install: skip
+      script:
+        - pip install black flake8
+        - flake8 .
+        - black --check feincms3_downloads tests

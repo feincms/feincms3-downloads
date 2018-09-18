@@ -9,9 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class DownloadBase(models.Model):
     file = models.FileField(_("file"), upload_to="files/%Y/%m")
-    file_size = models.IntegerField(
-        _("file size"), blank=True, null=True, editable=False
-    )
+    file_size = models.IntegerField(_("file size"), editable=False)
     caption = models.CharField(_("caption"), max_length=100, blank=True)
     show_preview = models.BooleanField(_("show preview"), default=True)
     preview = models.ImageField(_("preview"), blank=True, upload_to="preview/%Y/%m")
@@ -25,13 +23,10 @@ class DownloadBase(models.Model):
         return self.file.name
 
     def save(self, *args, **kwargs):
-        if self.file:
-            try:
-                self.file_size = self.file.size
-            except Exception:
-                pass
-        else:
-            self.file_size = None
+        try:
+            self.file_size = self.file.size
+        except Exception:
+            self.file_size = -1
 
         super().save(*args, **kwargs)
         if self.show_preview and not self.preview:
