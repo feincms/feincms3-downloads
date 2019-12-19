@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 
 from feincms3 import plugins
+from feincms3.regions import Regions
 from feincms3.renderer import TemplatePluginRenderer
 
 from .models import Article, HTML, Download
@@ -16,5 +17,5 @@ def article_detail(request, pk):
     return render(
         request,
         "article.html",
-        {"article": article, "regions": renderer.regions(article)},
+        {"article": article, "regions": Regions.from_item(article, renderer=renderer)},
     )
