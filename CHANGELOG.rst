@@ -5,6 +5,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+
+`0.3`_ (2019-12-19)
+~~~~~~~~~~~~~~~~~~~
+
 - Extracted the preview JPEG generation into its own function.
 - Modified the preview generation to never upscale images and to apply a
   bounding box instead of specifying only the maximum width.
@@ -28,4 +32,5 @@ Change log
 
 .. _0.1: https://github.com/matthiask/feincms3-downloads/commit/69a9b98f3111
 .. _0.2: https://github.com/matthiask/feincms3-downloads/compare/0.1...0.2
-.. _Next version: https://github.com/matthiask/feincms3-downloads/compare/0.2...master
+.. _0.3: https://github.com/matthiask/feincms3-downloads/compare/0.2...0.3
+.. _Next version: https://github.com/matthiask/feincms3-downloads/compare/0.3...master
