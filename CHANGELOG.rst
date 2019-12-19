@@ -8,6 +8,9 @@ Change log
 - Extracted the preview JPEG generation into its own function.
 - Modified the preview generation to never upscale images and to apply a
   bounding box instead of specifying only the maximum width.
+- Changed the PDF preview generation to use pdftocairo from
+  poppler-utils instead of convert from ImageMagick to avoid problems
+  because of changes which were designed to limit PostScript vulnerabilities.
 
 
 `0.2`_ (2016-09-18)

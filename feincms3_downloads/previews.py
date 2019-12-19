@@ -3,18 +3,35 @@ import subprocess
 import tempfile
 
 
-def preview_as_jpeg(path, *, resize="300x300>"):
+def preview_as_jpeg(path):
     with tempfile.TemporaryDirectory() as directory:
-        cmd = ["convert", "-resize", resize, "-quality", "90"]
-
+        preview = "%s/preview.jpg" % directory
         if path.lower().endswith(".pdf"):
-            cmd.extend(["-background", "white", "-alpha", "remove"])
-
-        cmd.extend(["%s[0]" % path, "%s/preview.jpg" % directory])
+            cmd = [
+                "pdftocairo",
+                path,
+                "-jpeg",
+                "-singlefile",
+                "-scale-to-x",
+                "300",
+                "-scale-to-y",
+                "-1",
+                preview.replace(".jpg", ""),
+            ]
+        else:
+            cmd = [
+                "convert",
+                "-resize",
+                "300x300>",
+                "-quality",
+                "90",
+                "%s[0]" % path,
+                preview,
+            ]
 
         # print(cmd)
         ret = subprocess.call(cmd, env={"PATH": "/usr/local/bin:/usr/bin:/bin"})
 
         if ret == 0:
-            with io.open("%s/preview.jpg" % directory, "rb") as f:
+            with io.open(preview, "rb") as f:
                 return f.read()
