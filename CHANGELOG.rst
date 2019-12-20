@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Added Django checks verifying that the required binaries are installed
+  and executable.
+
 
 `0.3`_ (2019-12-19)
 ~~~~~~~~~~~~~~~~~~~
