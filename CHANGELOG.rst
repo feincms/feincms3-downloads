@@ -5,8 +5,16 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+
+`0.4`_ (2020-08-13)
+~~~~~~~~~~~~~~~~~~~
+
 - Added Django checks verifying that the required binaries are installed
   and executable.
+- Removed the assumption that files are accesssible using local file
+  paths.
+- Dropped compatibility with Python<3.6 and Django<2.2, verified
+  compatibility with newer Python and Django versions.
 
 
 `0.3`_ (2019-12-19)
@@ -36,4 +44,5 @@ Change log
 .. _0.1: https://github.com/matthiask/feincms3-downloads/commit/69a9b98f3111
 .. _0.2: https://github.com/matthiask/feincms3-downloads/compare/0.1...0.2
 .. _0.3: https://github.com/matthiask/feincms3-downloads/compare/0.2...0.3
-.. _Next version: https://github.com/matthiask/feincms3-downloads/compare/0.3...master
+.. _0.4: https://github.com/matthiask/feincms3-downloads/compare/0.3...0.4
+.. _Next version: https://github.com/matthiask/feincms3-downloads/compare/0.4...master
