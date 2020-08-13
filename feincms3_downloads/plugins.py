@@ -1,3 +1,6 @@
+import os
+import tempfile
+
 from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -25,8 +28,13 @@ class DownloadBase(models.Model):
         self.file_size = self.file.size
         super().save(*args, **kwargs)
         if self.show_preview and not self.preview:
-            preview = preview_as_jpeg(self.file.path)
-            if preview:
-                self.preview.save("preview.jpg", ContentFile(preview), save=True)
+            with tempfile.NamedTemporaryFile(
+                suffix=os.path.splitext(self.file.name)[1]
+            ) as f:
+                f.write(self.file.read())
+                f.seek(0)
+                preview = preview_as_jpeg(f.name)
+                if preview:
+                    self.preview.save("preview.jpg", ContentFile(preview), save=True)
 
     save.alters_data = True
