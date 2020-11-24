@@ -1,5 +1,6 @@
 import io
 import os
+import shutil
 from PIL import Image
 
 from django.conf import settings
@@ -35,6 +36,9 @@ class Test(TestCase):
     def setUp(self):
         self.user = User.objects.create_superuser("admin", "admin@test.ch", "blabla")
         deactivate_all()
+        path = os.path.join(settings.MEDIA_ROOT, "files")
+        if os.path.exists(path):
+            shutil.rmtree(path)
 
     def login(self):
         client = Client()
@@ -66,6 +70,13 @@ class Test(TestCase):
         self.assertEqual(download.file_size, 5)
         self.assertTrue(download.show_preview)
         self.assertFalse(download.preview)
+
+        self.assertEqual(download.basename, "world.txt")
+        self.assertEqual(download.caption_or_basename, "world.txt")
+
+        download.caption = "Hello World"
+        self.assertEqual(download.basename, "world.txt")
+        self.assertEqual(download.caption_or_basename, "Hello World")
 
     def test_preview(self):
         client = self.login()

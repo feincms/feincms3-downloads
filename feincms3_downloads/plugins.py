@@ -24,6 +24,14 @@ class DownloadBase(models.Model):
     def __str__(self):
         return self.file.name
 
+    @property
+    def basename(self):
+        return os.path.basename(self.file.name)
+
+    @property
+    def caption_or_basename(self):
+        return self.caption or self.basename
+
     def save(self, *args, **kwargs):
         self.file_size = self.file.size
         super().save(*args, **kwargs)

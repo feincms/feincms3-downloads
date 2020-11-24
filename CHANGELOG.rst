@@ -5,6 +5,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Added ``DownloadBase.basename`` and
+  ``DownloadBase.caption_or_basename`` properties.
+
 
 `0.4`_ (2020-08-13)
 ~~~~~~~~~~~~~~~~~~~
