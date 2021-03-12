@@ -7,6 +7,8 @@ Change log
 
 - Added ``DownloadBase.basename`` and
   ``DownloadBase.caption_or_basename`` properties.
+- Switched to a declarative setup.
+- Switched from Travis CI to GitHub actions.
 
 
 `0.4`_ (2020-08-13)

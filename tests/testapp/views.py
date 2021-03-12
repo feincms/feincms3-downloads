@@ -1,11 +1,9 @@
 from django.shortcuts import get_object_or_404, render
-
 from feincms3 import plugins
 from feincms3.regions import Regions
 from feincms3.renderer import TemplatePluginRenderer
 
-from .models import Article, HTML, Download
-
+from .models import HTML, Article, Download
 
 renderer = TemplatePluginRenderer()
 renderer.register_string_renderer(HTML, plugins.html.render_html)

@@ -5,8 +5,8 @@ from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from feincms3_downloads.previews import preview_as_jpeg
 import feincms3_downloads.checks  # noqa
+from feincms3_downloads.previews import preview_as_jpeg
 
 
 class DownloadBase(models.Model):

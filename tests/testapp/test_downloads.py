@@ -1,15 +1,15 @@
 import io
 import os
 import shutil
-from PIL import Image
 
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.test import Client, TestCase
 from django.utils.translation import deactivate_all
+from PIL import Image
 
-from .models import Article, HTML, Download
+from .models import HTML, Article, Download
 
 
 def zero_management_form_data(prefix):
