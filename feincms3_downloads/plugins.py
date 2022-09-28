@@ -4,17 +4,18 @@ import tempfile
 from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from feincms3.utils import upload_to
 
 import feincms3_downloads.checks  # noqa
 from feincms3_downloads.previews import preview_as_jpeg
 
 
 class DownloadBase(models.Model):
-    file = models.FileField(_("file"), upload_to="files/%Y/%m")
+    file = models.FileField(_("file"), upload_to=upload_to)
     file_size = models.IntegerField(_("file size"), editable=False)
     caption = models.CharField(_("caption"), max_length=100, blank=True)
     show_preview = models.BooleanField(_("show preview"), default=True)
-    preview = models.ImageField(_("preview"), blank=True, upload_to="preview/%Y/%m")
+    preview = models.ImageField(_("preview"), blank=True, upload_to=upload_to)
 
     class Meta:
         abstract = True
