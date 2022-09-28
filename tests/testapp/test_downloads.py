@@ -35,7 +35,7 @@ class Test(TestCase):
     def setUp(self):
         self.user = User.objects.create_superuser("admin", "admin@test.ch", "blabla")
         deactivate_all()
-        path = os.path.join(settings.MEDIA_ROOT, "files")
+        path = os.path.join(settings.MEDIA_ROOT, "testapp.download")
         if os.path.exists(path):
             shutil.rmtree(path)
 
