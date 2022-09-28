@@ -1,4 +1,3 @@
-import io
 import subprocess
 import tempfile
 
@@ -33,5 +32,5 @@ def preview_as_jpeg(path):
         ret = subprocess.call(cmd, env={"PATH": "/usr/local/bin:/usr/bin:/bin"})
 
         if ret == 0:
-            with io.open(preview, "rb") as f:
+            with open(preview, "rb") as f:
                 return f.read()

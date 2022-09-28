@@ -5,6 +5,7 @@ from feincms3.renderer import TemplatePluginRenderer
 
 from .models import HTML, Article, Download
 
+
 renderer = TemplatePluginRenderer()
 renderer.register_string_renderer(HTML, plugins.html.render_html)
 renderer.register_template_renderer(Download, "plugins/download.html")

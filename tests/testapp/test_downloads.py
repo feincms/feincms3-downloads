@@ -1,4 +1,3 @@
-import io
 import os
 import shutil
 
@@ -29,7 +28,7 @@ def merge_dicts(*dicts):
 
 
 def openimage(path):
-    return io.open(os.path.join(settings.MEDIA_ROOT, path), "rb")
+    return open(os.path.join(settings.MEDIA_ROOT, path), "rb")
 
 
 class Test(TestCase):
@@ -63,7 +62,7 @@ class Test(TestCase):
         download = Download(parent=article, ordering=2, region="main")
         download.file.save("world.txt", ContentFile("World"))
 
-        response = self.client.get("/{}/".format(article.pk))
+        response = self.client.get(f"/{article.pk}/")
         self.assertContains(response, "<b>Hello</b>")
         self.assertContains(response, 'class="download button"')
 

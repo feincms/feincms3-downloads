@@ -9,6 +9,9 @@ Change log
   ``DownloadBase.caption_or_basename`` properties.
 - Switched to a declarative setup.
 - Switched from Travis CI to GitHub actions.
+- Raised the minimum version requirements to Django 3.2, Python 3.8. Added
+  Python 3.10, Django 4.0 and 4.1.
+- Started using pre-commit.
 
 
 `0.4`_ (2020-08-13)
