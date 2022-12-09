@@ -40,7 +40,7 @@ msgstr "Vorschau"
 
 #: plugins.py:19
 msgid "download"
-msgstr "Downloads"
+msgstr "Download"
 
 #: plugins.py:20
 msgid "downloads"

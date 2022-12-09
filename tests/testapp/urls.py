@@ -11,5 +11,5 @@ articles_urlpatterns = (
 
 urlpatterns = [
     re_path(r"^admin/", admin.site.urls),
-    re_path(r"", include(articles_urlpatterns)),
+    path("", include(articles_urlpatterns)),
 ]

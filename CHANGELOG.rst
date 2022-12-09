@@ -7,6 +7,8 @@ Change log
 
 .. _Next version: https://github.com/matthiask/feincms3-downloads/compare/0.5...main
 
+- Fixed a tranlsation.
+
 `0.5`_ (2022-09-28)
 ~~~~~~~~~~~~~~~~~~~
 
