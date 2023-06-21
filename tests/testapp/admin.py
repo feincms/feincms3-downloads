@@ -2,7 +2,7 @@ from content_editor.admin import ContentEditor, ContentEditorInline
 from django.contrib import admin
 from feincms3 import plugins
 
-from . import models
+from testapp import models
 
 
 @admin.register(models.Article)

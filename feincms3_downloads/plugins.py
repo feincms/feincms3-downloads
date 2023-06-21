@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from feincms3.utils import upload_to
 
-import feincms3_downloads.checks  # noqa
+import feincms3_downloads.checks  # noqa: F401
 from feincms3_downloads.previews import preview_as_jpeg
 
 
@@ -25,14 +25,6 @@ class DownloadBase(models.Model):
     def __str__(self):
         return self.file.name
 
-    @property
-    def basename(self):
-        return os.path.basename(self.file.name)
-
-    @property
-    def caption_or_basename(self):
-        return self.caption or self.basename
-
     def save(self, *args, **kwargs):
         self.file_size = self.file.size
         super().save(*args, **kwargs)
@@ -47,3 +39,11 @@ class DownloadBase(models.Model):
                     self.preview.save("preview.jpg", ContentFile(preview), save=True)
 
     save.alters_data = True
+
+    @property
+    def basename(self):
+        return os.path.basename(self.file.name)
+
+    @property
+    def caption_or_basename(self):
+        return self.caption or self.basename

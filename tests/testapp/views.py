@@ -3,7 +3,7 @@ from feincms3 import plugins
 from feincms3.regions import Regions
 from feincms3.renderer import TemplatePluginRenderer
 
-from .models import HTML, Article, Download
+from testapp.models import HTML, Article, Download
 
 
 renderer = TemplatePluginRenderer()

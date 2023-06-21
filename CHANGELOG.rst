@@ -2,11 +2,11 @@
 Change log
 ==========
 
-`Next version`_
-~~~~~~~~~~~~~~~
+Next version
+~~~~~~~~~~~~
 
-.. _Next version: https://github.com/matthiask/feincms3-downloads/compare/0.5...main
-
+- Modernized the package. Switched to hatchling, ruff.
+- Added Python 3.11, Django 4.2.
 - Fixed a tranlsation.
 
 `0.5`_ (2022-09-28)

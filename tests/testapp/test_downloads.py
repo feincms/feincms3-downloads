@@ -8,7 +8,7 @@ from django.test import Client, TestCase
 from django.utils.translation import deactivate_all
 from PIL import Image
 
-from .models import HTML, Article, Download
+from testapp.models import HTML, Article, Download
 
 
 def zero_management_form_data(prefix):
