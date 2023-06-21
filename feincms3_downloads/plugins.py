@@ -28,8 +28,12 @@ class DownloadBase(models.Model):
     def save(self, *args, **kwargs):
         self.file_size = self.file.size
         super().save(*args, **kwargs)
-        if self.show_preview and not self.preview:
-            generate_preview(source=self.file, preview=self.preview)
+        if (
+            self.show_preview
+            and not self.preview
+            and generate_preview(source=self.file, preview=self.preview)
+        ):
+            super().save()
 
     save.alters_data = True
 
@@ -42,9 +46,13 @@ class DownloadBase(models.Model):
         return self.caption or self.basename
 
 
-def generate_preview(*, source, preview, save=True):
+def generate_preview(*, source, preview):
     with tempfile.NamedTemporaryFile(suffix=os.path.splitext(source.name)[1]) as f:
+        source.open()
+        source.seek(0)
         f.write(source.read())
         f.seek(0)
         if p := preview_as_jpeg(f.name):
-            preview.save("preview.jpg", ContentFile(p), save=save)
+            preview.save("preview.jpg", ContentFile(p), save=False)
+            return True
+        return False
