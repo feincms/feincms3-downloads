@@ -7,7 +7,7 @@ Next version
 
 - Modernized the package. Switched to hatchling, ruff.
 - Added Python 3.11, Django 4.2.
-- Fixed a tranlsation.
+- Fixed a translation.
 
 `0.5`_ (2022-09-28)
 ~~~~~~~~~~~~~~~~~~~
