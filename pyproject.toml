@@ -8,9 +8,9 @@ requires = [
 name = "feincms3-downloads"
 description = "Downloads plugin for feincms3"
 readme = "README.rst"
-license = {text = "MIT"}
+license = { text = "MIT" }
 authors = [
-    { name = "Matthias Kestenholz", email = "mk@feinheit.ch" },
+  { name = "Matthias Kestenholz", email = "mk@feinheit.ch" },
 ]
 requires-python = ">=3.8"
 classifiers = [
@@ -27,6 +27,8 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
   "Topic :: Software Development",
   "Topic :: Software Development :: Libraries :: Application Frameworks",
@@ -35,24 +37,28 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "Django>=3.2",
+  "django>=3.2",
   "feincms3>=4",
-  "Pillow",
+  "pillow",
 ]
-[project.optional-dependencies]
-tests = [
+optional-dependencies.tests = [
   "coverage",
 ]
-[project.urls]
-Homepage = "https://github.com/matthiask/feincms3-downloads/"
+urls.Homepage = "https://github.com/matthiask/feincms3-downloads/"
 
 [tool.hatch.version]
 path = "feincms3_downloads/__init__.py"
 
 [tool.ruff]
+target-version = "py38"
+
+fix = true
+show-fixes = true
 extend-select = [
   # pyflakes, pycodestyle
-  "F", "E", "W",
+  "F",
+  "E",
+  "W",
   # mmcabe
   "C90",
   # isort
@@ -94,21 +100,12 @@ extend-ignore = [
   # No line length errors
   "E501",
 ]
-fix = true
-show-fixes = true
-target-version = "py38"
-
-[tool.ruff.isort]
-combine-as-imports = true
-lines-after-imports = 2
-
-[tool.ruff.mccabe]
-max-complexity = 15
-
-[tool.ruff.per-file-ignores]
-"*/migrat*/*" = [
+per-file-ignores."*/migrat*/*" = [
   # Allow using PascalCase model names in migrations
   "N806",
   # Ignore the fact that migration files are invalid module names
   "N999",
 ]
+mccabe.max-complexity = 15
+isort.combine-as-imports = true
+isort.lines-after-imports = 2
