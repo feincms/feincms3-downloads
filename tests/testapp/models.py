@@ -9,6 +9,9 @@ from feincms3_downloads.plugins import DownloadBase
 class Article(models.Model):
     regions = [Region(key="main", title=_("main"))]
 
+    def __str__(self):
+        return ""
+
 
 ArticlePlugin = create_plugin_base(Article)
 

@@ -13,10 +13,10 @@ from testapp.models import HTML, Article, Download
 
 def zero_management_form_data(prefix):
     return {
-        "%s-TOTAL_FORMS" % prefix: 0,
-        "%s-INITIAL_FORMS" % prefix: 0,
-        "%s-MIN_NUM_FORMS" % prefix: 0,
-        "%s-MAX_NUM_FORMS" % prefix: 1000,
+        f"{prefix}-TOTAL_FORMS": 0,
+        f"{prefix}-INITIAL_FORMS": 0,
+        f"{prefix}-MIN_NUM_FORMS": 0,
+        f"{prefix}-MAX_NUM_FORMS": 1000,
     }
 
 

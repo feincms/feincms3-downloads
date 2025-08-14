@@ -4,7 +4,7 @@ import tempfile
 
 def preview_as_jpeg(path):
     with tempfile.TemporaryDirectory() as directory:
-        preview = "%s/preview.jpg" % directory
+        preview = f"{directory}/preview.jpg"
         if path.lower().endswith(".pdf"):
             cmd = [
                 "pdftocairo",
@@ -24,7 +24,7 @@ def preview_as_jpeg(path):
                 "300x300>",
                 "-quality",
                 "90",
-                "%s[0]" % path,
+                f"{path}[0]",
                 preview,
             ]
 
