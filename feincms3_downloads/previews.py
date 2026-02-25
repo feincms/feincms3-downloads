@@ -1,3 +1,4 @@
+import os
 import subprocess
 import tempfile
 
@@ -29,7 +30,9 @@ def preview_as_jpeg(path):
             ]
 
         # print(cmd)
-        ret = subprocess.call(cmd, env={"PATH": "/usr/local/bin:/usr/bin:/bin"})
+        ret = subprocess.call(
+            cmd, env={"PATH": os.environ.get("PATH", "/usr/local/bin:/usr/bin:/bin")}
+        )
 
         if ret == 0:
             with open(preview, "rb") as f:
