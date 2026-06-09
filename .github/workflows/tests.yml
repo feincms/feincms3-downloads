@@ -23,7 +23,7 @@ jobs:
           - "3.14"
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: Install Imagemagick and poppler-utils
         run: sudo apt-get install imagemagick poppler-utils
       - name: Set up Python ${{ matrix.python-version }}
