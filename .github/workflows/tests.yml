@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Install Imagemagick and poppler-utils
-        run: sudo apt-get install imagemagick poppler-utils
+        run: sudo apt-get update && apt-get install imagemagick poppler-utils
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v7
         with:
