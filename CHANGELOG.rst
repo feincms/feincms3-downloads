@@ -12,6 +12,7 @@ Next version
   environment.
 - Changed the ``pdftocairo`` system check ID to ``feincms3_downloads.E002``;
   it duplicated the ``convert`` check's ``E001``.
+- Saved the generated preview to the same database as the download itself.
 
 
 `0.5`_ (2022-09-28)

@@ -33,7 +33,7 @@ class DownloadBase(models.Model):
             and not self.preview
             and generate_preview(source=self.file, preview=self.preview)
         ):
-            super().save()
+            super().save(using=kwargs.get("using"), update_fields=["preview"])
 
     save.alters_data = True
 
