@@ -5,6 +5,9 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
+0.6 (2026-09-29)
+~~~~~~~~~~~~~~~~
+
 - Modernized the package. Switched to hatchling, ruff.
 - Added Python 3.11, Django 4.2.
 - Added Django 6.1.
