@@ -7,6 +7,7 @@ Next version
 
 - Modernized the package. Switched to hatchling, ruff.
 - Added Python 3.11, Django 4.2.
+- Added Django 6.1.
 - Fixed a translation.
 - Changed the ``PATH`` handling to prefer the ``PATH`` from the process
   environment.
