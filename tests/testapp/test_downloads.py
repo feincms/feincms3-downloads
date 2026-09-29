@@ -1,5 +1,6 @@
 import os
 import shutil
+from unittest import mock
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -8,6 +9,7 @@ from django.test import Client, TestCase
 from django.utils.translation import deactivate_all
 from PIL import Image
 
+from feincms3_downloads.checks import check_binaries
 from testapp.models import HTML, Article, Download
 
 
@@ -130,3 +132,12 @@ class Test(TestCase):
 
         image = Image.open(download.preview)
         self.assertTrue(image.size[0] <= 310)
+
+    def test_checks(self):
+        self.assertEqual(check_binaries(None), [])
+        with mock.patch("shutil.which", return_value=None):
+            errors = check_binaries(None)
+        self.assertEqual(
+            [error.id for error in errors],
+            ["feincms3_downloads.E001", "feincms3_downloads.E002"],
+        )

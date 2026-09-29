@@ -10,6 +10,8 @@ Next version
 - Fixed a translation.
 - Changed the ``PATH`` handling to prefer the ``PATH`` from the process
   environment.
+- Changed the ``pdftocairo`` system check ID to ``feincms3_downloads.E002``;
+  it duplicated the ``convert`` check's ``E001``.
 
 
 `0.5`_ (2022-09-28)

@@ -22,7 +22,7 @@ def check_binaries(app_configs, **kwargs):
             Error(
                 'The "pdftocairo" binary could not be found',
                 hint="Try installing poppler-utils.",
-                id="feincms3_downloads.E001",
+                id="feincms3_downloads.E002",
             )
         )
     return errors
