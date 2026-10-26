@@ -75,7 +75,7 @@ tox -l             # List available test environments
   test suite passes at every commit.
 - Write short commit messages: one imperative summary line, matching the
   existing log (no `feat:`/`fix:` prefixes). The message doesn't have to repeat
-  what the diff already says; only add a body when the *why* isn't obvious.
+  what the diff already says; only add a body when the _why_ isn't obvious.
 - Never add attribution to commits: no `Co-Authored-By` trailers, no
   "Generated with ..." lines, no other agent or tool attribution.
 - Never use `--no-verify` or skip hooks
