@@ -5,6 +5,8 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
+- Dropped Python 3.8 and 3.9.
+
 0.6 (2026-09-29)
 ~~~~~~~~~~~~~~~~
 
