@@ -12,3 +12,4 @@ venv
 .coverage
 htmlcov
 tests/testapp/media
+.venv
