@@ -68,7 +68,7 @@ tox -l             # List available test environments
 
 ## Git and Version Control
 
-- Repository is at `github.com/matthiask/feincms3-downloads`
+- Repository is at `github.com/feincms/feincms3-downloads`
 - Don't commit unless explicitly requested
 - Commit feature by feature, not everything at once. Each commit should stand
   on its own: ship a change together with the tests covering it, so that the

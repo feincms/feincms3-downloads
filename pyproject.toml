@@ -48,7 +48,7 @@ dependencies = [
 optional-dependencies.tests = [
   "coverage",
 ]
-urls.Homepage = "https://github.com/matthiask/feincms3-downloads/"
+urls.Homepage = "https://github.com/feincms/feincms3-downloads/"
 
 [tool.hatch]
 version.path = "feincms3_downloads/__init__.py"

@@ -24,7 +24,7 @@ Next version
 `0.5`_ (2022-09-28)
 ~~~~~~~~~~~~~~~~~~~
 
-.. _0.5: https://github.com/matthiask/feincms3-downloads/compare/0.4...0.5
+.. _0.5: https://github.com/feincms/feincms3-downloads/compare/0.4...0.5
 
 - Added ``DownloadBase.basename`` and
   ``DownloadBase.caption_or_basename`` properties.
@@ -70,7 +70,7 @@ Next version
 
 - Initial release!
 
-.. _0.1: https://github.com/matthiask/feincms3-downloads/commit/69a9b98f3111
-.. _0.2: https://github.com/matthiask/feincms3-downloads/compare/0.1...0.2
-.. _0.3: https://github.com/matthiask/feincms3-downloads/compare/0.2...0.3
-.. _0.4: https://github.com/matthiask/feincms3-downloads/compare/0.3...0.4
+.. _0.1: https://github.com/feincms/feincms3-downloads/commit/69a9b98f3111
+.. _0.2: https://github.com/feincms/feincms3-downloads/compare/0.1...0.2
+.. _0.3: https://github.com/feincms/feincms3-downloads/compare/0.2...0.3
+.. _0.4: https://github.com/feincms/feincms3-downloads/compare/0.3...0.4
