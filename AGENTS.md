@@ -7,10 +7,12 @@ This document provides guidance for AI coding agents working on the feincms3-dow
 feincms3-downloads provides an abstract download plugin for feincms3 / django-content-editor. It stores the file size and automatically generates JPEG previews of uploaded files using external binaries.
 
 **Key directories:**
+
 - `feincms3_downloads/` - Main package code
 - `tests/testapp/` - Test application and test suite
 
 **Core modules:**
+
 - `plugins.py` - `DownloadBase` abstract model and `generate_preview()`
 - `previews.py` - `preview_as_jpeg()`, shells out to `pdftocairo` (PDFs) or ImageMagick's `convert` (everything else)
 - `checks.py` - Django system checks for the required binaries
@@ -25,16 +27,19 @@ The external binaries `convert` (ImageMagick) and `pdftocairo` (poppler-utils) m
 ### Testing Requirements
 
 **Run tests through tox:**
+
 ```bash
 tox -e py313-dj52  # Run specific Python/Django version
 tox -l             # List available test environments
 ```
 
 **Test suite structure:**
+
 - `tests/testapp/test_downloads.py` - Model, preview generation and admin tests
 - Test media (`smallliz.tif`, `yes.pdf`) lives in `tests/testapp/media/`
 
 **Important testing practices:**
+
 - Write tests for new functionality in `test_downloads.py`
 - Place imports at the top of test files, not inside test methods
 - Tests must pass before changes are considered complete
@@ -52,11 +57,13 @@ tox -l             # List available test environments
 ## Architecture Considerations
 
 **DownloadBase:**
+
 - Abstract model; projects combine it with their own plugin base (see `tests/testapp/models.py`)
 - `save()` stores `file_size`, then generates a preview after the first save if `show_preview` is set and no preview exists yet, and saves again with `update_fields=["preview"]`
 - `basename` and `caption_or_basename` are convenience properties for templates
 
 **Preview generation:**
+
 - The source file is copied to a temporary file (keeping its extension) because the external binaries need a real path; storage backends may not be local
 - `preview_as_jpeg()` returns `None` when the binary fails, in which case no preview is stored
 - The subprocess environment only contains `PATH`
@@ -85,11 +92,13 @@ tox -l             # List available test environments
 ## File Organization
 
 **Don't create unnecessary files:**
+
 - No new markdown/documentation files without explicit request
 - Don't create helper utilities for one-time operations
 - Don't add configuration for hypothetical future needs
 
 **Translations:**
+
 - Locale files in `feincms3_downloads/locale/`
 - Use Django's translation functions (`gettext`, `gettext_lazy`)
 
